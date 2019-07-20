@@ -1,17 +1,31 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Article from "../article";
+import { useAccordion } from "../../hooks/accordion";
 
+function ArticleList({ articles, defaultOpenId }) {
+  const { isOpen, setOpenId } = useAccordion(defaultOpenId);
+  const [error, setError] = useState();
+  const [foo, setFoo] = useState({ bar: { baz: "hi" } });
+
+  return (
+    <div>
+      {articles.map(article => (
+        <Article
+          key={article.id}
+          article={article}
+          isOpen={isOpen(article.id)}
+          onBtnClick={setOpenId(article.id)}
+        />
+      ))}
+    </div>
+  );
+}
+
+/*
 class ArticleList extends Component {
   state = {
-    openArticleId: this.props.defaultOpenId,
-    error: null
+    openArticleId: this.props.defaultOpenId
   };
-
-  componentDidCatch(error, errorInfo) {
-    this.setState({
-      error
-    });
-  }
 
   render() {
     if (this.state.error) {
@@ -33,5 +47,6 @@ class ArticleList extends Component {
 
   toggleOpenArticle = openArticleId => () => this.setState({ openArticleId });
 }
+*/
 
 export default ArticleList;
