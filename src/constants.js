@@ -1,1 +1,1 @@
-export const WORLD_NAME = 'WORLD_NAME'
+export const WORLD_NAME = 'NEW WORLD'
