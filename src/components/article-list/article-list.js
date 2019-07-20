@@ -3,46 +3,20 @@ import Article from "../article";
 
 class ArticleList extends Component {
   state = {
-    openArticleId: this.props.defaultOpenId
+    openArticleId: this.props.defaultOpenId,
+    error: null
   };
 
-  static getDerivedStateFromProps(props, state) {
-    return {};
+  componentDidCatch(error, errorInfo) {
+    this.setState({
+      error
+    });
   }
-
-  /*
-    Once
-   */
-
-  /*
-  componentWillMount() {
-  }
-*/
-
-  componentDidMount() {}
-
-  componentWillUnmount() {}
-
-  /*
-    Update
-   */
-
-  /*
-  componentWillReceiveProps(nextProps, nextContext) {
-
-  }
-*/
-
-  /*
-  componentWillUpdate(nextProps, nextState, nextContext) {
-  }
-*/
-
-  getSnapshotBeforeUpdate(prevProps, prevState) {}
-
-  componentDidUpdate(prevProps, prevState, snapshot) {}
 
   render() {
+    if (this.state.error) {
+      return <h3>Some error</h3>;
+    }
     return (
       <div>
         {this.props.articles.map(article => (

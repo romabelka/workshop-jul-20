@@ -4,7 +4,7 @@ import styles from "./styles.css";
 function Article({ article, isOpen, onBtnClick }) {
   const body = isOpen && (
     <section>
-      <p>{article.text}</p>
+      <p>{article.text.split("").join(" ")}</p>
     </section>
   );
 
