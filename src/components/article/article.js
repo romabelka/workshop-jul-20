@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.css";
 
 function Article({ article, isOpen, onBtnClick }) {
+  useEffect(() => {
+    //subscribe
+    console.log("subscribe for ", article.id);
+
+    return () => console.log("unsubscribe", article.id);
+  }, []);
+
   const body = isOpen && (
     <section>
       <p>{article.text.split("").join(" ")}</p>
