@@ -7,7 +7,7 @@ function Article({ article, isOpen, onBtnClick }) {
     console.log("subscribe for ", article.id);
 
     return () => console.log("unsubscribe", article.id);
-  }, []);
+  }, [article.id]);
 
   const body = isOpen && (
     <section>

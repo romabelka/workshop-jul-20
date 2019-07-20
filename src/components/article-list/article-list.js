@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Article from "../article";
-import { useAccordion } from "../../hooks/accordion";
+import accordion from "../../decorators/accordion";
 
-function ArticleList({ articles, defaultOpenId }) {
-  const { isOpen, setOpenId } = useAccordion(defaultOpenId);
+function ArticleList({ articles, defaultOpenId, isOpen, setOpenId }) {
   const [error, setError] = useState();
   const [foo, setFoo] = useState({ bar: { baz: "hi" } });
 
@@ -49,4 +48,4 @@ class ArticleList extends Component {
 }
 */
 
-export default ArticleList;
+export default accordion(ArticleList);
