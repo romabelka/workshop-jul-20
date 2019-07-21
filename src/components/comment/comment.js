@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Comment({ comment }) {
   return (
     <div>
-      <p>{comment.text}</p>
+      <p data-id="comment-text">{comment.text}</p>
       <b>{comment.user}</b>
     </div>
   );
