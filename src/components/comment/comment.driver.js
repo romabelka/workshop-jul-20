@@ -1,13 +1,9 @@
-export default class CommentDriver {
-  constructor(container) {
-    this.container = container;
-  }
+import Driver from "../../test/driver";
 
+export default class CommentDriver extends Driver {
   get = {
-    byId: dataId => this.container.find(`[data-id="${dataId}"]`),
     text: () =>
-      this.get
-        .byId("comment-text")
+      this.getById("comment-text")
         .at(0)
         .text()
   };

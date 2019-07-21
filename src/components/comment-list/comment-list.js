@@ -14,8 +14,8 @@ class CommentList extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={ev => ev.stopPropagation()}>
+      <div data-id="comment-container">
+        <button onClick={this.props.toggleOpen} data-id="comment-list-btn">
           {this.props.isOpen ? "hide" : "show"} comments
         </button>
         {this.getBody()}
@@ -28,9 +28,13 @@ class CommentList extends Component {
     const { comments } = this.props;
     if (!comments) return <h3>No comments yet</h3>;
 
-    return comments.map(comment => (
-      <Comment comment={comment} key={comment.id} />
-    ));
+    return (
+      <div data-id="comment-list-body">
+        {comments.map(comment => (
+          <Comment comment={comment} key={comment.id} />
+        ))}
+      </div>
+    );
   }
 }
 /*

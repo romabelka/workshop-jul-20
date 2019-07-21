@@ -12,9 +12,9 @@ function Article({ article, isOpen, onBtnClick }) {
   }, [article.id]);
 
   const body = isOpen && (
-    <section ref={sectionRef => console.log("---", sectionRef)}>
+    <section data-id="article-body">
       <p>{article.text}</p>
-      <CommentList comments={article.comments} ref={setCommentList} />
+      <CommentList comments={article.comments} />
     </section>
   );
 
@@ -25,10 +25,6 @@ function Article({ article, isOpen, onBtnClick }) {
       <button onClick={onBtnClick}>{isOpen ? "hide" : "open"} article</button>
     </div>
   );
-}
-
-function setCommentList(commentList) {
-  window.commentList = findDOMNode(commentList);
 }
 
 export default Article;
