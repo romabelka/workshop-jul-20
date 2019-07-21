@@ -2,22 +2,24 @@ import React, { useState } from "react";
 import Article from "../article";
 import accordion from "../../decorators/accordion";
 
-function ArticleList({ articles, defaultOpenId, isOpen, setOpenId }) {
-  const [error, setError] = useState();
-  const [foo, setFoo] = useState({ bar: { baz: "hi" } });
+@accordion
+class ArticleList extends React.Component {
+  render() {
+    const { articles, defaultOpenId, isOpen, setOpenId } = this.props;
 
-  return (
-    <div>
-      {articles.map(article => (
-        <Article
-          key={article.id}
-          article={article}
-          isOpen={isOpen(article.id)}
-          onBtnClick={setOpenId(article.id)}
-        />
-      ))}
-    </div>
-  );
+    return (
+      <div>
+        {articles.map(article => (
+          <Article
+            key={article.id}
+            article={article}
+            isOpen={isOpen(article.id)}
+            onBtnClick={setOpenId(article.id)}
+          />
+        ))}
+      </div>
+    );
+  }
 }
 
 /*
@@ -48,4 +50,4 @@ class ArticleList extends Component {
 }
 */
 
-export default accordion(ArticleList);
+export default ArticleList;
