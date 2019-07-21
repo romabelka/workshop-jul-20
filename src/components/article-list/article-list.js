@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import Article from "../article";
 import accordion from "../../decorators/accordion";
 
+@connect(state => ({ articles: state.articles }))
 @accordion
 class ArticleList extends React.Component {
   render() {

@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { findDOMNode } from "react-dom";
+import { connect } from "react-redux";
 import styles from "./styles.css";
 import CommentList from "../comment-list";
+import { deleteArticle } from "../../ac";
 
-function Article({ article, isOpen, onBtnClick }) {
+function Article({ article, isOpen, onBtnClick, deleteArticle }) {
   useEffect(() => {
     //subscribe
     console.log("subscribe for ", article.id);
@@ -21,10 +22,14 @@ function Article({ article, isOpen, onBtnClick }) {
   return (
     <div>
       <h3 className={styles.header}>{article.title}</h3>
+      <button onClick={() => deleteArticle(article.id)}>Delete me</button>
       {body}
       <button onClick={onBtnClick}>{isOpen ? "hide" : "open"} article</button>
     </div>
   );
 }
 
-export default Article;
+export default connect(
+  null,
+  { deleteArticle }
+)(Article);
