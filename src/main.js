@@ -1,15 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
-import Header from "./components/header";
-import articles from "./fixtures";
-import ArticleList from "./components/article-list";
-import Chart from "./components/chart";
+import { Provider } from "react-redux";
+import store from "./store";
+import App from "./components/app";
 
 render(
-  <div>
-    <Header />
-    <Chart articles={articles} />
-    <ArticleList articles={articles} defaultOpenId={articles[0].id} />
-  </div>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("app")
 );
