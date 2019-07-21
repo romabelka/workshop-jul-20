@@ -8,7 +8,7 @@ class ArticleList extends React.Component {
     const { articles, defaultOpenId, isOpen, setOpenId } = this.props;
 
     return (
-      <div>
+      <div ref={this.setContainerRef}>
         {articles.map(article => (
           <Article
             key={article.id}
@@ -20,6 +20,8 @@ class ArticleList extends React.Component {
       </div>
     );
   }
+
+  setContainerRef = containerRef => console.log("container: ", containerRef);
 }
 
 /*

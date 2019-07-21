@@ -15,7 +15,7 @@ class CommentList extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.toggleOpen}>
+        <button onClick={ev => ev.stopPropagation()}>
           {this.props.isOpen ? "hide" : "show"} comments
         </button>
         {this.getBody()}

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { findDOMNode } from "react-dom";
 import styles from "./styles.css";
 import CommentList from "../comment-list";
 
@@ -11,9 +12,9 @@ function Article({ article, isOpen, onBtnClick }) {
   }, [article.id]);
 
   const body = isOpen && (
-    <section>
-      <p>{article.text.split("").join(" ")}</p>
-      <CommentList comments={article.comments} />
+    <section ref={sectionRef => console.log("---", sectionRef)}>
+      <p>{article.text}</p>
+      <CommentList comments={article.comments} ref={setCommentList} />
     </section>
   );
 
@@ -24,6 +25,10 @@ function Article({ article, isOpen, onBtnClick }) {
       <button onClick={onBtnClick}>{isOpen ? "hide" : "open"} article</button>
     </div>
   );
+}
+
+function setCommentList(commentList) {
+  window.commentList = findDOMNode(commentList);
 }
 
 export default Article;
