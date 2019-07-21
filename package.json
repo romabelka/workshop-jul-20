@@ -31,7 +31,8 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
-    "@babel/preset-react": "^7.0.0"
+    "@babel/preset-react": "^7.0.0",
+    "prop-types": "^15.7.2"
   },
   "husky": {
     "hooks": {

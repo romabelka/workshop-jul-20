@@ -1,9 +1,17 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Comment from "../comment";
 import toggleOpen from "../../decorators/toggleOpen";
 
 @toggleOpen
 class CommentList extends Component {
+  static propTypes = {
+    comments: PropTypes.array.isRequired,
+    //from @toggleOpen
+    toggleOpen: PropTypes.func,
+    isOpen: PropTypes.bool
+  };
+
   render() {
     return (
       <div>
@@ -25,5 +33,11 @@ class CommentList extends Component {
     ));
   }
 }
+/*
+
+CommentList.propTypes = {
+
+}
+*/
 
 export default CommentList;
