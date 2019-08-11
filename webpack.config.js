@@ -49,5 +49,9 @@ module.exports = {
     new HtmlWebpackPlugin({ template: "./index.html" }),
     new MiniCssExtractPlugin({})
   ],
-  devServer: {}
+  devServer: {
+    proxy: {
+      "/api": "http://localhost:3001"
+    }
+  }
 };
