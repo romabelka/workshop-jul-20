@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./styles.css";
 import CommentList from "../comment-list";
 import { deleteArticle, fetchArticle } from "../../ac";
 import Loader from "../loader";
+import userContext from "../../contexts/user-context";
 
 export function Article({
   article,
@@ -13,6 +14,8 @@ export function Article({
   deleteArticle,
   fetchArticle
 }) {
+  const username = useContext(userContext);
+
   useEffect(() => {
     if (isOpen) {
       fetchArticle(article.id);
@@ -29,7 +32,9 @@ export function Article({
 
   return (
     <div>
-      <h3 className={styles.header}>{article.title}</h3>
+      <h3 className={styles.header}>
+        {username}: {article.title}
+      </h3>
       <button onClick={() => deleteArticle(article.id)}>Delete me</button>
       {body}
       <button onClick={onBtnClick}>{isOpen ? "hide" : "open"} article</button>

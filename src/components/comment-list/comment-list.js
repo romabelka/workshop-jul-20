@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Comment from "../comment";
 import toggleOpen from "../../decorators/toggleOpen";
 import CommentFrom from "../comment-form";
+import { Consumer } from "../../contexts/user-context";
 
 @toggleOpen
 class CommentList extends Component {
@@ -16,6 +17,7 @@ class CommentList extends Component {
   render() {
     return (
       <div data-id="comment-container">
+        <Consumer>{username => <h3>{username}</h3>}</Consumer>
         <button onClick={this.props.toggleOpen} data-id="comment-list-btn">
           {this.props.isOpen ? "hide" : "show"} comments
         </button>
