@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode=production",
-    "start": "webpack-dev-server --mode=development",
+    "start": "concurrently 'npm run dev' 'npm run api'",
+    "api": "node simple_api/server.js",
+    "dev": "webpack-dev-server --mode=development",
     "test": "node ./scripts/test.js"
   },
   "keywords": [],
@@ -18,6 +20,7 @@
     "@babel/preset-env": "^7.5.5",
     "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.6",
+    "concurrently": "^4.1.1",
     "css-loader": "^3.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",

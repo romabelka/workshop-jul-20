@@ -1,11 +1,12 @@
 import { createSelector } from "reselect";
 
 export const filtersSelector = state => state.filters;
-export const articlesSelector = state => state.articles;
+export const articlesSelector = state => state.articles.entities;
 export const articlesListSelector = createSelector(
   articlesSelector,
   articles => articles.valueSeq().toArray()
 );
+export const articlesLoadingSelector = state => state.articles.isLoading;
 
 export const selectedSelector = state => filtersSelector(state).selected;
 export const dateRangeSelector = state => filtersSelector(state).dateRange;

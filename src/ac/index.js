@@ -3,6 +3,7 @@ import {
   CHANGE_DATE_RANGE,
   CHANGE_SELECTION,
   DELETE_ARTICLE,
+  FETCH_ALL_ARTICLES,
   INCREMENT
 } from "../constants";
 
@@ -29,4 +30,9 @@ export const addComment = (comment, articleId) => ({
   type: ADD_COMMENT,
   payload: { comment, articleId },
   generateId: true
+});
+
+export const fetchAllArticles = () => ({
+  type: FETCH_ALL_ARTICLES,
+  callAPI: "/api/article"
 });

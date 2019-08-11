@@ -3,11 +3,20 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Article from "../article";
 import accordion from "../../decorators/accordion";
-import { filtratedArticlesSelector } from "../../selectors";
+import {
+  articlesLoadingSelector,
+  filtratedArticlesSelector
+} from "../../selectors";
+import { fetchAllArticles } from "../../ac";
+import Loader from "../loader";
 
-@connect(state => ({
-  articles: filtratedArticlesSelector(state)
-}))
+@connect(
+  state => ({
+    articles: filtratedArticlesSelector(state),
+    isLoading: articlesLoadingSelector(state)
+  }),
+  { fetchAllArticles }
+)
 @accordion
 class ArticleList extends React.Component {
   static propTypes = {
@@ -17,8 +26,25 @@ class ArticleList extends React.Component {
     openItemId: PropTypes.string,
     toggleOpenItem: PropTypes.func
   };
+
+  componentDidMount() {
+    this.props.fetchAllArticles();
+  }
+
   render() {
-    const { articles, defaultOpenId, isOpen, setOpenId } = this.props;
+    /*
+    useEffect(() => props.fetchAllArticles(), [])
+*/
+
+    const {
+      articles,
+      defaultOpenId,
+      isOpen,
+      setOpenId,
+      isLoading
+    } = this.props;
+
+    if (isLoading) return <Loader />;
 
     return (
       <div ref={this.setContainerRef}>
