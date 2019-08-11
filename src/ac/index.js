@@ -10,6 +10,7 @@ import {
   START,
   SUCCESS
 } from "../constants";
+import { push } from "connected-react-router";
 
 export const increment = () => ({
   type: INCREMENT
@@ -61,6 +62,8 @@ export const fetchAllArticles = () => async dispatch => {
       error,
       type: FETCH_ALL_ARTICLES + ERROR
     });
+
+    dispatch(push("/error"));
   }
 };
 

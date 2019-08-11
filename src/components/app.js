@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Redirect, Route, Switch } from "react-router-dom";
 import Header from "./header";
 import ArticleList from "./article-list";
 import Counter from "./counter";
@@ -33,6 +33,7 @@ function App() {
         Username: <input value={username} onChange={setUsername} />
         <Header />
         <Switch>
+          <Redirect from="/" exact to="/articles" />
           <Route path="/counter" component={Counter} exact />
           <Route path="/filters" component={Filters} />
           <Route path="/articles" component={ArticleList} />
@@ -50,6 +51,7 @@ function App() {
               return <h1>Hello {match.params.name}</h1>;
             }}
           />
+          <Route path="/error" render={() => <h1>Error Page</h1>} />
           <Route render={() => <h1>Not Found</h1>} />
         </Switch>
       </div>
