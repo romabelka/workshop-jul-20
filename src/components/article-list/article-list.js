@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Article from "../article";
 import accordion from "../../decorators/accordion";
 
@@ -23,6 +24,13 @@ import accordion from "../../decorators/accordion";
 })
 @accordion
 class ArticleList extends React.Component {
+  static propTypes = {
+    articles: PropTypes.array.isRequired,
+    fetchAll: PropTypes.func,
+    //from decorator
+    openItemId: PropTypes.string,
+    toggleOpenItem: PropTypes.func
+  };
   render() {
     const { articles, defaultOpenId, isOpen, setOpenId } = this.props;
 

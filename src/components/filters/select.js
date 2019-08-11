@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { changeSelection } from "../../ac";
 
 function SelectFilter({ articles, selected, changeSelection }) {
@@ -18,6 +19,12 @@ function SelectFilter({ articles, selected, changeSelection }) {
     />
   );
 }
+
+SelectFilter.propTypes = {
+  articles: PropTypes.array,
+  selected: PropTypes.array,
+  changeSelection: PropTypes.func
+};
 
 export default connect(
   state => ({

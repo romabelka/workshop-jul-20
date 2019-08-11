@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import styles from "./styles.css";
 import CommentList from "../comment-list";
 import { deleteArticle } from "../../ac";
@@ -28,6 +29,14 @@ function Article({ article, isOpen, onBtnClick, deleteArticle }) {
     </div>
   );
 }
+
+Article.propTypes = {
+  article: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string
+  })
+};
 
 export default connect(
   null,
