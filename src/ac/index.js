@@ -5,6 +5,7 @@ import {
   DELETE_ARTICLE,
   ERROR,
   FETCH_ALL_ARTICLES,
+  FETCH_ARTICLE,
   INCREMENT,
   START,
   SUCCESS
@@ -62,3 +63,9 @@ export const fetchAllArticles = () => async dispatch => {
     });
   }
 };
+
+export const fetchArticle = id => ({
+  type: FETCH_ARTICLE,
+  payload: { id },
+  callAPI: `/api/article/${id}`
+});

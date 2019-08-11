@@ -4,6 +4,7 @@ import {
   DELETE_ARTICLE,
   ERROR,
   FETCH_ALL_ARTICLES,
+  FETCH_ARTICLE,
   START,
   SUCCESS
 } from "../constants";
@@ -14,6 +15,7 @@ const ArticleModel = Record({
   title: "",
   text: "",
   date: "",
+  loading: false,
   comments: []
 });
 
@@ -52,6 +54,15 @@ export default (articles = new ReducerModel(), action) => {
         .set("isLoading", false)
         .set("isLoaded", true)
         .set("error", null);
+
+    case FETCH_ARTICLE + START:
+      return articles.setIn(["entities", payload.id, "loading"], true);
+
+    case FETCH_ARTICLE + SUCCESS:
+      return articles.setIn(
+        ["entities", payload.id],
+        new ArticleModel(response)
+      );
 
     default:
       return articles;
