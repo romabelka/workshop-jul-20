@@ -3,8 +3,11 @@ import {
   CHANGE_DATE_RANGE,
   CHANGE_SELECTION,
   DELETE_ARTICLE,
+  ERROR,
   FETCH_ALL_ARTICLES,
-  INCREMENT
+  INCREMENT,
+  START,
+  SUCCESS
 } from "../constants";
 
 export const increment = () => ({
@@ -32,7 +35,30 @@ export const addComment = (comment, articleId) => ({
   generateId: true
 });
 
+/*
 export const fetchAllArticles = () => ({
   type: FETCH_ALL_ARTICLES,
   callAPI: "/api/article"
 });
+*/
+
+export const fetchAllArticles = () => async dispatch => {
+  dispatch({
+    type: FETCH_ALL_ARTICLES + START
+  });
+
+  try {
+    const res = await fetch("/api/article");
+    const response = await res.json();
+
+    dispatch({
+      response,
+      type: FETCH_ALL_ARTICLES + SUCCESS
+    });
+  } catch (error) {
+    dispatch({
+      error,
+      type: FETCH_ALL_ARTICLES + ERROR
+    });
+  }
+};
