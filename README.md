@@ -25,3 +25,7 @@
 ### HT3.1 Написать мидлвару для генерации id
 
 ### HT3.2 Реализовать добавление коммента к статье
+
+https://github.com/immerjs/immer
+
+https://immutable-js.github.io/immutable-js/docs/#/

@@ -4,13 +4,13 @@ export const filtersSelector = state => state.filters;
 export const articlesSelector = state => state.articles;
 export const articlesListSelector = createSelector(
   articlesSelector,
-  articles => Object.values(articles)
+  articles => articles.valueSeq().toArray()
 );
 
 export const selectedSelector = state => filtersSelector(state).selected;
 export const dateRangeSelector = state => filtersSelector(state).dateRange;
 
-export const commentSelector = ({ comments }, { id }) => comments[id];
+export const commentSelector = ({ comments }, { id }) => comments.get(id);
 
 export const filtratedArticlesSelector = createSelector(
   articlesListSelector,

@@ -5,6 +5,7 @@ import createStore from "./store";
 import App from "./components/app";
 
 const store = createStore();
+window.store = store;
 
 render(
   <Provider store={store}>

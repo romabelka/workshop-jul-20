@@ -1,5 +1,7 @@
-export const arrToMap = arr =>
-  arr.reduce((acc, el) => {
-    acc[el.id] = el;
-    return acc;
-  }, {});
+import { OrderedMap } from "immutable";
+
+export const arrToMap = (arr, DataModel) =>
+  arr.reduce(
+    (acc, el) => acc.set(el.id, DataModel ? new DataModel(el) : el),
+    new OrderedMap({})
+  );
