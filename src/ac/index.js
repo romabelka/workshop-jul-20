@@ -1,4 +1,5 @@
 import {
+  ADD_COMMENT,
   CHANGE_DATE_RANGE,
   CHANGE_SELECTION,
   DELETE_ARTICLE,
@@ -22,4 +23,10 @@ export const changeDateRange = dateRange => ({
 export const changeSelection = selected => ({
   type: CHANGE_SELECTION,
   payload: { selected }
+});
+
+export const addComment = (comment, articleId) => ({
+  type: ADD_COMMENT,
+  payload: { comment, articleId },
+  generateId: true
 });

@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Comment from "../comment";
 import toggleOpen from "../../decorators/toggleOpen";
+import CommentFrom from "../comment-form";
 
 @toggleOpen
 class CommentList extends Component {
   static propTypes = {
-    comments: PropTypes.array.isRequired,
+    article: PropTypes.object.isRequired,
     //from @toggleOpen
     toggleOpen: PropTypes.func,
     isOpen: PropTypes.bool
@@ -25,14 +26,15 @@ class CommentList extends Component {
 
   getBody() {
     if (!this.props.isOpen) return null;
-    const { comments } = this.props;
+    const { comments, id } = this.props.article;
     if (!comments) return <h3>No comments yet</h3>;
 
     return (
       <div data-id="comment-list-body">
-        {comments.map(id => (
-          <Comment id={id} key={id} />
+        {comments.map(commentId => (
+          <Comment id={commentId} key={commentId} />
         ))}
+        <CommentFrom articleId={id} />
       </div>
     );
   }
