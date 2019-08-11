@@ -6,13 +6,6 @@ import CommentList from "../comment-list";
 import { deleteArticle } from "../../ac";
 
 export function Article({ article, isOpen, onBtnClick, deleteArticle }) {
-  useEffect(() => {
-    //subscribe
-    console.log("subscribe for ", article.id);
-
-    return () => console.log("unsubscribe", article.id);
-  }, [article.id]);
-
   const body = isOpen && (
     <section data-id="article-body">
       <p>{article.text}</p>
