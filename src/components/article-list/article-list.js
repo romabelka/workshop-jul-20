@@ -5,12 +5,9 @@ import Article from "../article";
 import accordion from "../../decorators/accordion";
 import { filtratedArticlesSelector } from "../../selectors";
 
-@connect(state => {
-  console.log("---", "mapStateToProps");
-  return {
-    articles: filtratedArticlesSelector(state)
-  };
-})
+@connect(state => ({
+  articles: filtratedArticlesSelector(state)
+}))
 @accordion
 class ArticleList extends React.Component {
   static propTypes = {
@@ -21,7 +18,6 @@ class ArticleList extends React.Component {
     toggleOpenItem: PropTypes.func
   };
   render() {
-    console.log("---", "render ArticleList");
     const { articles, defaultOpenId, isOpen, setOpenId } = this.props;
 
     return (

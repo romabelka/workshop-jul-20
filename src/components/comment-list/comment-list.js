@@ -30,8 +30,8 @@ class CommentList extends Component {
 
     return (
       <div data-id="comment-list-body">
-        {comments.map(comment => (
-          <Comment comment={comment} key={comment.id} />
+        {comments.map(id => (
+          <Comment id={id} key={id} />
         ))}
       </div>
     );

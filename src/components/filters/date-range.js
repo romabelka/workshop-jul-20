@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import "react-day-picker/lib/style.css";
 import { changeDateRange } from "../../ac";
+import { dateRangeSelector } from "../../selectors";
 
 function DateRange({ range, changeDateRange }) {
   const { from, to } = range;
@@ -29,7 +30,7 @@ DateRange.propTypes = {
 
 export default connect(
   state => ({
-    range: state.filters.dateRange
+    range: dateRangeSelector(state)
   }),
   { changeDateRange }
 )(DateRange);

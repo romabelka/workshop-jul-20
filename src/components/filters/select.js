@@ -3,6 +3,7 @@ import Select from "react-select";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { changeSelection } from "../../ac";
+import { articlesListSelector, selectedSelector } from "../../selectors";
 
 function SelectFilter({ articles, selected, changeSelection }) {
   const options = articles.map(article => ({
@@ -28,8 +29,8 @@ SelectFilter.propTypes = {
 
 export default connect(
   state => ({
-    selected: state.filters.selected,
-    articles: state.articles
+    selected: selectedSelector(state),
+    articles: articlesListSelector(state)
   }),
   { changeSelection }
 )(SelectFilter);

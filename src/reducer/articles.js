@@ -1,5 +1,8 @@
 import { DELETE_ARTICLE } from "../constants";
-import defaultArticles from "../fixtures";
+import { normalizedArticles } from "../fixtures";
+import { arrToMap } from "../utils";
+
+const defaultArticles = arrToMap(normalizedArticles);
 
 export default (articles = defaultArticles, action) => {
   const { type, payload } = action;
